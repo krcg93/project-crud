@@ -1,0 +1,26 @@
+﻿<h1>Usuarios</h1>
+<a routerLink="add" class="btn btn-sm btn-success mb-2">Añadir usuario</a>
+<button (click)="updateUser()" class="btn btn-sm btn-danger btn-delete-user">
+    <span>Procesar</span>
+</button>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 30%">Nombre</th>
+            <th style="width: 30%">Apellido</th>
+            <th style="width: 30%">Procesado</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users">
+            <td>{{user.name}}</td>
+            <td>{{user.lastName}}</td>
+            <td><input type="checkbox"  [checked]="user.indicted" (change)="itemSelect(user, $event)"/></td>
+        </tr>
+        <tr *ngIf="!users">
+            <td colspan="4" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>
